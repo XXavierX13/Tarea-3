@@ -1,0 +1,114 @@
+---
+title: "Emisiones de CO₂ en el mundo"
+subtitle: "por: Xavier Calderón Aguilar"
+format: html
+toc: true
+editor: visual
+---
+
+# Introducción
+
+Las emisiones de dióxido de carbono (CO₂) son una de las principales causas del cambio climático, y probablemente ya habrás oído hablar de ellas en los medios o en las conversaciones sobre el calentamiento global. Pero, ¿sabías que, además de ser responsables del aumento de la temperatura global, las emisiones de CO₂ también afectan a otros aspectos importantes como la salud, la biodiversidad y la estabilidad de los ecosistemas? En pocas palabras, las emisiones de CO₂ son una de las principales fuentes de los problemas ambientales que estamos enfrentando hoy en día.
+
+Este sitio está diseñado para analizar datos históricos sobre las emisiones de CO₂ a nivel global, con un enfoque especial en los diferentes países. Los datos provienen de Our World in Data, una fuente confiable y de renombre que recopila información detallada sobre una variedad de indicadores sociales, económicos y ambientales. Al analizar las emisiones de CO₂ por país, podemos obtener una imagen más clara de cómo las naciones están contribuyendo al cambio climático y qué tan efectivos están siendo en sus esfuerzos por reducir estas emisiones.
+
+Uno de los objetivos principales de este análisis es entender los patrones globales de emisiones y plantear preguntas de investigación que puedan llevarnos a soluciones más efectivas. ¿Qué países han hecho mayores avances en la reducción de sus emisiones? ¿Cuáles siguen siendo grandes emisores, a pesar de los esfuerzos globales? Además, al analizar estos datos, se busca comprender si existen factores comunes, como el tipo de energía utilizada o el desarrollo económico, que puedan explicar las variaciones en las emisiones entre países.
+
+A futuro, se integrarán herramientas interactivas como mapas para visualizar la distribución geoespacial de las emisiones y explorar patrones más complejos. La idea es tener un panorama más claro de cómo se distribuyen las emisiones a lo largo del mundo y cómo podemos trabajar juntos para reducirlas.
+
+---
+
+## Descripción general
+
+El conjunto de datos que se analiza en este proyecto fue recopilado por el sitio **Our World in Data**, una plataforma ampliamente reconocida por su trabajo en la divulgación de datos accesibles sobre temas sociales, económicos y ambientales. Este conjunto es especialmente valioso porque contiene información anual sobre las emisiones de dióxido de carbono (CO₂) de prácticamente todos los países del mundo, desde el año 1750 hasta la actualidad. Es decir, tenemos a disposición más de dos siglos y medio de datos, lo que nos permite observar no solo los cambios recientes, sino también las grandes transformaciones históricas, como la Revolución Industrial y su impacto en el medio ambiente.
+
+La riqueza de este conjunto no se limita solo a las emisiones totales. También incluye medidas per cápita, lo que resulta muy útil para hacer comparaciones más justas entre países grandes y pequeños. Por ejemplo, un país con mucha población puede tener emisiones totales muy altas, pero si se analiza cuánto emite cada persona en promedio, el panorama puede cambiar. Este tipo de análisis ayuda a evitar juicios apresurados y a entender mejor las realidades específicas de cada nación.
+
+Además, los datos están complementados con variables muy relevantes como la población, el Producto Interno Bruto (PIB) per cápita y las emisiones desglosadas por tipo de fuente: carbón, petróleo, gas, cemento, y otras. Esta segmentación permite ir más allá del total de emisiones y entender qué sectores o fuentes energéticas están contribuyendo más al problema en cada país. Por ejemplo, en algunos países, el carbón sigue siendo la principal fuente de energía, mientras que en otros ya ha sido desplazado por el gas o incluso por energías renovables.
+
+Otra ventaja de este conjunto es que está en constante actualización y en un formato accesible, lo que facilita su uso para investigación, docencia o incluso decisiones de política pública. Al trabajar con este tipo de datos, se abre la posibilidad de identificar tendencias, comparar comportamientos regionales, y sobre todo, plantear nuevas preguntas que nos ayuden a enfrentar mejor el desafío del cambio climático.
+
+📌 Fuente: [Our World in Data – CO₂ Emissions](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions)
+
+---
+
+## Principales variables
+
+- `country`: Nombre del país o región.
+- `year`: Año de la observación.
+- `co2`: Emisiones totales de CO₂ (en millones de toneladas).
+- `co2_per_capita`: Emisiones per cápita (toneladas por persona).
+- `gdp`: Producto Interno Bruto per cápita (USD constantes).
+- `population`: Población total.
+- `coal_co2`, `oil_co2`, `gas_co2`: Emisiones por fuente de energía.
+
+---
+
+## Preguntas de investigación
+
+- ¿Qué países han aumentado o disminuido sus emisiones de CO₂ en las últimas décadas?
+- ¿Existe relación entre el PIB per cápita y las emisiones per cápita?
+- ¿Qué regiones emiten más CO₂ por habitante?
+- ¿Cómo varía la composición de las fuentes de emisión entre países?
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+co2_data <- read.csv("https://github.com/owid/co2-data/raw/master/owid-co2-data.csv")
+
+
+
+
+
+
+```
+![*Créditos: Imagen tomada de [EFE:Verde](https://efeverde.com/emisiones-mundiales-co2-record/).*](https://efeverde.com/wp-content/uploads/2022/01/AAALEMANIA-chimeneas-planta-Boxberg-HUMO.jpg)
+
+# Gráfico 1: Emisiones totales por país (último año disponible)
+
+
+```{r grafico1, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+# Filtrar el último año con datos completos (ej. 2021)
+data_latest <- co2_data %>%
+  filter(year == 2021 & !is.na(co2)) %>%
+  arrange(desc(co2)) %>%
+  slice(1:20)  # Top 20 países emisores
+
+p1 <- ggplot(data_latest, aes(x = reorder(country, co2), y = co2)) +
+  geom_col(fill = "red") +
+  coord_flip() +
+  labs(title = "Top 20 países emisores de CO₂ (2021)",
+       x = "País",
+       y = "Emisiones de CO₂ (millones de toneladas)") +
+  theme_minimal()
+
+ggplotly(p1)
+```
+
+
+# Gráfico 2: Emisiones per cápita vs PIB per cápita
+
+```{r, echo=FALSE}
+# Filtrar los datos para el gráfico 2
+data_gdp <- co2_data %>%
+  filter(year == 2021, !is.na(gdp), !is.na(co2_per_capita)) %>%
+  filter(!is.na(country))
+
+# Crear gráfico
+p2 <- ggplot(data_gdp, aes(x = gdp, y = co2_per_capita, label = country)) +
+  geom_point(color = "blue", alpha = 0.7) +
+  scale_x_log10() +
+  labs(title = "Emisiones per cápita vs PIB per cápita (2021)",
+       x = "PIB per cápita (USD, escala logarítmica)",
+       y = "Emisiones per cápita (toneladas)") +
+  theme_minimal()
+
+# Generar gráfico interactivo
+ggplotly(p2)
+```

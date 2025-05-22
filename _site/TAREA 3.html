@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Emisiones de CO₂ en el mundo – Mi sitio Quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-991b1886d3c685c7aa2b62b80640c7af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <ul class="collapse">
+  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link" data-scroll-target="#descripción-general">Descripción general</a></li>
+  <li><a href="#principales-variables" id="toc-principales-variables" class="nav-link" data-scroll-target="#principales-variables">Principales variables</a></li>
+  <li><a href="#preguntas-de-investigación" id="toc-preguntas-de-investigación" class="nav-link" data-scroll-target="#preguntas-de-investigación">Preguntas de investigación</a></li>
+  </ul></li>
+  <li><a href="#gráfico-1-emisiones-totales-por-país-último-año-disponible" id="toc-gráfico-1-emisiones-totales-por-país-último-año-disponible" class="nav-link" data-scroll-target="#gráfico-1-emisiones-totales-por-país-último-año-disponible">Gráfico 1: Emisiones totales por país (último año disponible)</a></li>
+  <li><a href="#gráfico-2-emisiones-per-cápita-vs-pib-per-cápita" id="toc-gráfico-2-emisiones-per-cápita-vs-pib-per-cápita" class="nav-link" data-scroll-target="#gráfico-2-emisiones-per-cápita-vs-pib-per-cápita">Gráfico 2: Emisiones per cápita vs PIB per cápita</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Emisiones de CO₂ en el mundo</h1>
+<p class="subtitle lead">por: Xavier Calderón Aguilar</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<p>Las emisiones de dióxido de carbono (CO₂) son una de las principales causas del cambio climático, y probablemente ya habrás oído hablar de ellas en los medios o en las conversaciones sobre el calentamiento global. Pero, ¿sabías que, además de ser responsables del aumento de la temperatura global, las emisiones de CO₂ también afectan a otros aspectos importantes como la salud, la biodiversidad y la estabilidad de los ecosistemas? En pocas palabras, las emisiones de CO₂ son una de las principales fuentes de los problemas ambientales que estamos enfrentando hoy en día.</p>
+<p>Este sitio está diseñado para analizar datos históricos sobre las emisiones de CO₂ a nivel global, con un enfoque especial en los diferentes países. Los datos provienen de Our World in Data, una fuente confiable y de renombre que recopila información detallada sobre una variedad de indicadores sociales, económicos y ambientales. Al analizar las emisiones de CO₂ por país, podemos obtener una imagen más clara de cómo las naciones están contribuyendo al cambio climático y qué tan efectivos están siendo en sus esfuerzos por reducir estas emisiones.</p>
+<p>Uno de los objetivos principales de este análisis es entender los patrones globales de emisiones y plantear preguntas de investigación que puedan llevarnos a soluciones más efectivas. ¿Qué países han hecho mayores avances en la reducción de sus emisiones? ¿Cuáles siguen siendo grandes emisores, a pesar de los esfuerzos globales? Además, al analizar estos datos, se busca comprender si existen factores comunes, como el tipo de energía utilizada o el desarrollo económico, que puedan explicar las variaciones en las emisiones entre países.</p>
+<p>A futuro, se integrarán herramientas interactivas como mapas para visualizar la distribución geoespacial de las emisiones y explorar patrones más complejos. La idea es tener un panorama más claro de cómo se distribuyen las emisiones a lo largo del mundo y cómo podemos trabajar juntos para reducirlas.</p>
+<hr>
+<section id="descripción-general" class="level2">
+<h2 class="anchored" data-anchor-id="descripción-general">Descripción general</h2>
+<p>El conjunto de datos que se analiza en este proyecto fue recopilado por el sitio <strong>Our World in Data</strong>, una plataforma ampliamente reconocida por su trabajo en la divulgación de datos accesibles sobre temas sociales, económicos y ambientales. Este conjunto es especialmente valioso porque contiene información anual sobre las emisiones de dióxido de carbono (CO₂) de prácticamente todos los países del mundo, desde el año 1750 hasta la actualidad. Es decir, tenemos a disposición más de dos siglos y medio de datos, lo que nos permite observar no solo los cambios recientes, sino también las grandes transformaciones históricas, como la Revolución Industrial y su impacto en el medio ambiente.</p>
+<p>La riqueza de este conjunto no se limita solo a las emisiones totales. También incluye medidas per cápita, lo que resulta muy útil para hacer comparaciones más justas entre países grandes y pequeños. Por ejemplo, un país con mucha población puede tener emisiones totales muy altas, pero si se analiza cuánto emite cada persona en promedio, el panorama puede cambiar. Este tipo de análisis ayuda a evitar juicios apresurados y a entender mejor las realidades específicas de cada nación.</p>
+<p>Además, los datos están complementados con variables muy relevantes como la población, el Producto Interno Bruto (PIB) per cápita y las emisiones desglosadas por tipo de fuente: carbón, petróleo, gas, cemento, y otras. Esta segmentación permite ir más allá del total de emisiones y entender qué sectores o fuentes energéticas están contribuyendo más al problema en cada país. Por ejemplo, en algunos países, el carbón sigue siendo la principal fuente de energía, mientras que en otros ya ha sido desplazado por el gas o incluso por energías renovables.</p>
+<p>Otra ventaja de este conjunto es que está en constante actualización y en un formato accesible, lo que facilita su uso para investigación, docencia o incluso decisiones de política pública. Al trabajar con este tipo de datos, se abre la posibilidad de identificar tendencias, comparar comportamientos regionales, y sobre todo, plantear nuevas preguntas que nos ayuden a enfrentar mejor el desafío del cambio climático.</p>
+<p>📌 Fuente: <a href="https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions">Our World in Data – CO₂ Emissions</a></p>
+<hr>
+</section>
+<section id="principales-variables" class="level2">
+<h2 class="anchored" data-anchor-id="principales-variables">Principales variables</h2>
+<ul>
+<li><code>country</code>: Nombre del país o región.</li>
+<li><code>year</code>: Año de la observación.</li>
+<li><code>co2</code>: Emisiones totales de CO₂ (en millones de toneladas).</li>
+<li><code>co2_per_capita</code>: Emisiones per cápita (toneladas por persona).</li>
+<li><code>gdp</code>: Producto Interno Bruto per cápita (USD constantes).</li>
+<li><code>population</code>: Población total.</li>
+<li><code>coal_co2</code>, <code>oil_co2</code>, <code>gas_co2</code>: Emisiones por fuente de energía.</li>
+</ul>
+<hr>
+</section>
+<section id="preguntas-de-investigación" class="level2">
+<h2 class="anchored" data-anchor-id="preguntas-de-investigación">Preguntas de investigación</h2>
+<ul>
+<li>¿Qué países han aumentado o disminuido sus emisiones de CO₂ en las últimas décadas?</li>
+<li>¿Existe relación entre el PIB per cápita y las emisiones per cápita?</li>
+<li>¿Qué regiones emiten más CO₂ por habitante?</li>
+<li>¿Cómo varía la composición de las fuentes de emisión entre países?</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://efeverde.com/wp-content/uploads/2022/01/AAALEMANIA-chimeneas-planta-Boxberg-HUMO.jpg" class="img-fluid figure-img"></p>
+<figcaption><em>Créditos: Imagen tomada de <a href="https://efeverde.com/emisiones-mundiales-co2-record/">EFE:Verde</a>.</em></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="gráfico-1-emisiones-totales-por-país-último-año-disponible" class="level1">
+<h1>Gráfico 1: Emisiones totales por país (último año disponible)</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-51668b65f18640c68d4e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-51668b65f18640c68d4e">{"x":{"data":[{"orientation":"h","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999858,0.89999999999999947,0.89999999999999858,0.90000000000000036,0.90000000000000036,0.90000000000000036,0.90000000000000036,0.90000000000000036,0.90000000000000013,0.89999999999999991],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[36991.733999999997,24323.074000000001,21640.396000000001,18894.787,16980.641,14433.055,11775.040000000001,11447.913,7518.2619999999997,6192.7520000000004,6019.9799999999996,5304.04,5304.04,5032.2129999999997,4489.79,3145.654,2801.1439999999998,2753.741,2674.2220000000002,2502.895],"y":[20,19,18,17,16,15,14,13,12,11,10,8,9,7,6,5,4,3,2,1],"text":["reorder(country, co2): World<br />co2: 36991.734","reorder(country, co2): Non-OECD (GCP)<br />co2: 24323.074","reorder(country, co2): Asia<br />co2: 21640.396","reorder(country, co2): Asia (GCP)<br />co2: 18894.787","reorder(country, co2): Upper-middle-income countries<br />co2: 16980.641","reorder(country, co2): High-income countries<br />co2: 14433.055","reorder(country, co2): OECD (GCP)<br />co2: 11775.040","reorder(country, co2): China<br />co2: 11447.913","reorder(country, co2): Asia (excl. China and India)<br />co2:  7518.262","reorder(country, co2): North America<br />co2:  6192.752","reorder(country, co2): North America (GCP)<br />co2:  6019.980","reorder(country, co2): Europe<br />co2:  5304.040","reorder(country, co2): Europe (GCP)<br />co2:  5304.040","reorder(country, co2): United States<br />co2:  5032.213","reorder(country, co2): Lower-middle-income countries<br />co2:  4489.790","reorder(country, co2): European Union (28)<br />co2:  3145.654","reorder(country, co2): European Union (27)<br />co2:  2801.144","reorder(country, co2): Middle East (GCP)<br />co2:  2753.741","reorder(country, co2): India<br />co2:  2674.222","reorder(country, co2): Europe (excl. EU-27)<br />co2:  2502.895"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826491,"l":195.06849315068496},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Top 20 países emisores de CO₂ (2021)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1849.5866999999998,38841.320699999997],"tickmode":"array","ticktext":["0","10000","20000","30000"],"tickvals":[0,10000,20000,30000],"categoryorder":"array","categoryarray":["0","10000","20000","30000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Emisiones de CO₂ (millones de toneladas)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,20.600000000000001],"tickmode":"array","ticktext":["Europe (excl. EU-27)","India","Middle East (GCP)","European Union (27)","European Union (28)","Lower-middle-income countries","United States","Europe","Europe (GCP)","North America (GCP)","North America","Asia (excl. China and India)","China","OECD (GCP)","High-income countries","Upper-middle-income countries","Asia (GCP)","Asia","Non-OECD (GCP)","World"],"tickvals":[1,2,3,4.0000000000000009,5,6.0000000000000009,7,8,9,10,11,12.000000000000002,13,14.000000000000002,15,16,17,18,19,20],"categoryorder":"array","categoryarray":["Europe (excl. EU-27)","India","Middle East (GCP)","European Union (27)","European Union (28)","Lower-middle-income countries","United States","Europe","Europe (GCP)","North America (GCP)","North America","Asia (excl. China and India)","China","OECD (GCP)","High-income countries","Upper-middle-income countries","Asia (GCP)","Asia","Non-OECD (GCP)","World"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"País","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"22507ba95691":{"x":{},"y":{},"type":"bar"}},"cur_data":"22507ba95691","visdat":{"22507ba95691":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="gráfico-2-emisiones-per-cápita-vs-pib-per-cápita" class="level1">
+<h1>Gráfico 2: Emisiones per cápita vs PIB per cápita</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-11e720a039804bbe73ce" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-11e720a039804bbe73ce">{"x":{"data":[{"x":[10.753114419335589,10.542414266865277,11.762568887063702,11.187441470136692,11.909729369861569,10.547474357367399,12.112841227790307,11.579595231934924,11.224234054212619,10.751311202888294,11.907039450728831,9.4858735266723304,11.266048110721588,11.676689816401666,10.495977497291761,10.879334391446806,10.656134629528038,10.567249604589207,12.491020474948543,11.126747526664422,10.56133737412938,9.9521241276810475,10.792586095142397,10.903202263658683,12.231327682515541,9.5576781104300874,9.5722233947227977,10.371643101773477,11.641136067758687,13.417979598711613,11.839431037670188,9.2146223819071569,10.36243386965338,10.886579518103716,11.056311751169574,10.983149624849979,10.917439260675062,10.510929260059619,11.524693917920473,10.932674848902773,11.460016940883602,9.5150814087083351,8.8043112725912653,11.260469577014362,11.230108058140701,12.146433676501246,10.761717396802313,10.291293439725225,10.607685323087038,9.9888677408580691,11.401141641542814,11.345449179924147,12.415778166569815,10.544532240133309,9.6472901604666301,10.806542489803132,12.584449014071431,11.148899957882342,11.396475194210804,11.147949642179899,10.354403062954297,9.4952584982680062,10.25166670572848,10.679665713508973,11.567795917270793,11.435991564063716,10.177526641419799,12.991297895994277,12.521615880892661,12.183418803324653,11.688362832448524,11.458848727353477,11.500200008985685,12.313930447262013,10.284413958428035,12.67448303876837,10.985252812115277,11.688376452585784,11.256867782681349,11.306232246929188,10.471716689095846,10.721203351812774,10.701183556453882,10.70562953338257,9.672949012255998,9.606105723396956,11.020705759660084,10.920346910341749,10.551174173029032,10.568702589745659,10.41921713057765,11.907083235642164,10.469231093304829,10.233555606325112,10.165506810247907,10.396551437600358,12.295158116434971,10.401997128844014,10.630045199915511,10.079371617547944,11.488772576766859,10.479855395948698,11.455453779454192,10.323251875700182,10.958398864844211,11.925263940497286,11.292947840970349,10.499415903220212,10.348287278400717,12.040887659046209,10.607995449642122,10.449719563839194,11.669324316427476,11.230513350939775,12.106600501514613,10.364840015995885,10.932058285012227,10.812897575724946,11.522041882962533,11.974576939407397,12.069597630737581,11.442763928461073,11.563772388243681,11.703394168359141,12.580876099633988,10.425909580810133,9.1806053560478222,8.9162960451175959,12.224591760162431,10.6953004880266,11.057902162565769,9.4689518539206183,10.051474966239109,11.64889836653346,11.169946398377869,10.818531677943181,11.85069394561194,12.318935784110101,12.187837029087737,11.44544603753782,11.682589468017383,11.738858437125524,10.734415419043597,12.085650394371294,10.670245957601741,11.277251448950333,12.039488321168854,10.129762911453343,10.563542958694917,11.101311694033756,12.354146127127617,10.981316896130132,10.987668593739297,11.64671072025838,11.860879581009939,12.400052513177018,13.281019217874368,10.818548238112609,11.571077111522529,11.141939045820759,11.887567815200438,14.100387069462599,10.777815937354537,10.820805093716663,10.400366807923497],"y":[0.25700000000000001,1.802,4.0119999999999996,0.55600000000000005,4.218,2.5840000000000001,14.987,7.3330000000000002,3.742,24.102,0.64200000000000002,4.1669999999999998,6.5869999999999997,8.1999999999999993,0.42899999999999999,1.823,6.5529999999999999,2.5019999999999998,2.3769999999999998,6.1689999999999996,0.28599999999999998,0.059999999999999998,1.1339999999999999,0.35699999999999998,14.051,1.0569999999999999,0.047,0.14999999999999999,4.2999999999999998,8.0259999999999998,1.843,0.60899999999999999,1.258,1.5109999999999999,0.46100000000000002,4.4359999999999999,2.028,5.4429999999999996,9.1769999999999996,0.042999999999999997,5.0519999999999996,0.47399999999999998,2.3980000000000001,2.7719999999999998,2.161,2.3519999999999999,1.212,4.048,7.8019999999999996,0.83799999999999997,0.13200000000000001,6.8209999999999997,4.625,2.327,0.28199999999999997,2.9289999999999998,8.1099999999999994,0.63200000000000001,5.4370000000000003,1.125,0.30099999999999999,0.14799999999999999,0.30599999999999999,0.98999999999999999,4.5049999999999999,4.9790000000000001,9.4149999999999991,1.891,2.2389999999999999,8.8149999999999995,3.6930000000000001,7.4660000000000002,6.5979999999999999,5.625,2.589,8.4489999999999998,1.865,12.923,0.41899999999999998,21.815000000000001,1.514,3.0590000000000002,3.839,3.3740000000000001,1.5149999999999999,0.14899999999999999,7.9240000000000004,4.9569999999999999,13.151,0.14999999999999999,0.094,7.968,0.308,3.0720000000000001,0.95099999999999996,3.1040000000000001,3.5009999999999999,1.9350000000000001,12.532,3.9929999999999999,1.901,0.248,0.55400000000000005,1.3879999999999999,0.53300000000000003,7.8780000000000001,6.7199999999999998,0.77400000000000002,0.111,0.61799999999999999,2.0569999999999999,3.5049999999999999,7.5860000000000003,16.690999999999999,1.0349999999999999,0.70099999999999996,2.4260000000000002,1.2170000000000001,1.569,1.248,8.7010000000000005,3.8769999999999998,37.031999999999996,4.0140000000000002,11.739000000000001,0.124,2.8319999999999999,0.64400000000000002,22.210999999999999,0.71499999999999997,6.391,4.9749999999999996,0.155,9.0329999999999995,6.4699999999999998,6.1790000000000003,6.9249999999999998,11.882,4.7990000000000004,1.014,3.7090000000000001,4.109,1.204,12.037000000000001,0.92600000000000005,0.29099999999999998,3.7240000000000002,0.30099999999999999,24.475999999999999,2.5870000000000002,5.2220000000000004,8.9440000000000008,0.13400000000000001,4.7439999999999998,22.088999999999999,5.0910000000000002,14.794,2.306,3.5110000000000001,2.7789999999999999,3.1739999999999999,4.6500000000000004,0.29299999999999998,0.39700000000000002,0.64600000000000002],"text":["gdp: 5.663885e+10<br />co2_per_capita:  0.257<br />country: Afghanistan","gdp: 3.486697e+10<br />co2_per_capita:  1.802<br />country: Albania","gdp: 5.788538e+11<br />co2_per_capita:  4.012<br />country: Algeria","gdp: 1.539719e+11<br />co2_per_capita:  0.556<br />country: Angola","gdp: 8.123242e+11<br />co2_per_capita:  4.218<br />country: Argentina","gdp: 3.527560e+10<br />co2_per_capita:  2.584<br />country: Armenia","gdp: 1.296705e+12<br />co2_per_capita: 14.987<br />country: Australia","gdp: 3.798352e+11<br />co2_per_capita:  7.333<br />country: Austria","gdp: 1.675846e+11<br />co2_per_capita:  3.742<br />country: Azerbaijan","gdp: 5.640417e+10<br />co2_per_capita: 24.102<br />country: Bahrain","gdp: 8.073084e+11<br />co2_per_capita:  0.642<br />country: Bangladesh","gdp: 3.061072e+09<br />co2_per_capita:  4.167<br />country: Barbados","gdp: 1.845220e+11<br />co2_per_capita:  6.587<br />country: Belarus","gdp: 4.749959e+11<br />co2_per_capita:  8.200<br />country: Belgium","gdp: 3.133123e+10<br />co2_per_capita:  0.429<br />country: Benin","gdp: 7.574159e+10<br />co2_per_capita:  1.823<br />country: Bolivia","gdp: 4.530380e+10<br />co2_per_capita:  6.553<br />country: Bosnia and Herzegovina","gdp: 3.691897e+10<br />co2_per_capita:  2.502<br />country: Botswana","gdp: 3.097565e+12<br />co2_per_capita:  2.377<br />country: Brazil","gdp: 1.338898e+11<br />co2_per_capita:  6.169<br />country: Bulgaria","gdp: 3.641978e+10<br />co2_per_capita:  0.286<br />country: Burkina Faso","gdp: 8.956207e+09<br />co2_per_capita:  0.060<br />country: Burundi","gdp: 6.202776e+10<br />co2_per_capita:  1.134<br />country: Cambodia","gdp: 8.002068e+10<br />co2_per_capita:  0.357<br />country: Cameroon","gdp: 1.703443e+12<br />co2_per_capita: 14.051<br />country: Canada","gdp: 3.611421e+09<br />co2_per_capita:  1.057<br />country: Cape Verde","gdp: 3.734422e+09<br />co2_per_capita:  0.047<br />country: Central African Republic","gdp: 2.353115e+10<br />co2_per_capita:  0.150<br />country: Chad","gdp: 4.376592e+11<br />co2_per_capita:  4.300<br />country: Chile","gdp: 2.618060e+13<br />co2_per_capita:  8.026<br />country: China","gdp: 6.909252e+11<br />co2_per_capita:  1.843<br />country: Colombia","gdp: 1.639164e+09<br />co2_per_capita:  0.609<br />country: Comoros","gdp: 2.303742e+10<br />co2_per_capita:  1.258<br />country: Congo","gdp: 7.701574e+10<br />co2_per_capita:  1.511<br />country: Costa Rica","gdp: 1.138444e+11<br />co2_per_capita:  0.461<br />country: Cote d'Ivoire","gdp: 9.619436e+10<br />co2_per_capita:  4.436<br />country: Croatia","gdp: 8.268739e+10<br />co2_per_capita:  2.028<br />country: Cuba","gdp: 3.242868e+10<br />co2_per_capita:  5.443<br />country: Cyprus","gdp: 3.347294e+11<br />co2_per_capita:  9.177<br />country: Czechia","gdp: 8.563964e+10<br />co2_per_capita:  0.043<br />country: Democratic Republic of Congo","gdp: 2.884144e+11<br />co2_per_capita:  5.052<br />country: Denmark","gdp: 3.274021e+09<br />co2_per_capita:  0.474<br />country: Djibouti","gdp: 6.372521e+08<br />co2_per_capita:  2.398<br />country: Dominica","gdp: 1.821669e+11<br />co2_per_capita:  2.772<br />country: Dominican Republic","gdp: 1.698666e+11<br />co2_per_capita:  2.161<br />country: Ecuador","gdp: 1.400986e+12<br />co2_per_capita:  2.352<br />country: Egypt","gdp: 5.777200e+10<br />co2_per_capita:  1.212<br />country: El Salvador","gdp: 1.955660e+10<br />co2_per_capita:  4.048<br />country: Equatorial Guinea","gdp: 4.052148e+10<br />co2_per_capita:  7.802<br />country: Estonia","gdp: 9.746928e+09<br />co2_per_capita:  0.838<br />country: Eswatini","gdp: 2.518498e+11<br />co2_per_capita:  0.132<br />country: Ethiopia","gdp: 2.215385e+11<br />co2_per_capita:  6.821<br />country: Finland","gdp: 2.604823e+12<br />co2_per_capita:  4.625<br />country: France","gdp: 3.503743e+10<br />co2_per_capita:  2.327<br />country: Gabon","gdp: 4.439051e+09<br />co2_per_capita:  0.282<br />country: Gambia","gdp: 6.405344e+10<br />co2_per_capita:  2.929<br />country: Georgia","gdp: 3.841042e+12<br />co2_per_capita:  8.110<br />country: Germany","gdp: 1.408964e+11<br />co2_per_capita:  0.632<br />country: Ghana","gdp: 2.491582e+11<br />co2_per_capita:  5.437<br />country: Greece","gdp: 1.405884e+11<br />co2_per_capita:  1.125<br />country: Guatemala","gdp: 2.261534e+10<br />co2_per_capita:  0.301<br />country: Guinea","gdp: 3.127941e+09<br />co2_per_capita:  0.148<br />country: Guinea-Bissau","gdp: 1.785117e+10<br />co2_per_capita:  0.306<br />country: Haiti","gdp: 4.782618e+10<br />co2_per_capita:  0.990<br />country: Honduras","gdp: 3.696544e+11<br />co2_per_capita:  4.505<br />country: Hong Kong","gdp: 2.728925e+11<br />co2_per_capita:  4.979<br />country: Hungary","gdp: 1.504966e+10<br />co2_per_capita:  9.415<br />country: Iceland","gdp: 9.801621e+12<br />co2_per_capita:  1.891<br />country: India","gdp: 3.323655e+12<br />co2_per_capita:  2.239<br />country: Indonesia","gdp: 1.525523e+12<br />co2_per_capita:  8.815<br />country: Iran","gdp: 4.879360e+11<br />co2_per_capita:  3.693<br />country: Iraq","gdp: 2.876396e+11<br />co2_per_capita:  7.466<br />country: Ireland","gdp: 3.163734e+11<br />co2_per_capita:  6.598<br />country: Israel","gdp: 2.060300e+12<br />co2_per_capita:  5.625<br />country: Italy","gdp: 1.924926e+10<br />co2_per_capita:  2.589<br />country: Jamaica","gdp: 4.725884e+12<br />co2_per_capita:  8.449<br />country: Japan","gdp: 9.666134e+10<br />co2_per_capita:  1.865<br />country: Jordan","gdp: 4.879513e+11<br />co2_per_capita: 12.923<br />country: Kazakhstan","gdp: 1.806624e+11<br />co2_per_capita:  0.419<br />country: Kenya","gdp: 2.024101e+11<br />co2_per_capita: 21.815<br />country: Kuwait","gdp: 2.962898e+10<br />co2_per_capita:  1.514<br />country: Kyrgyzstan","gdp: 5.262636e+10<br />co2_per_capita:  3.059<br />country: Laos","gdp: 5.025550e+10<br />co2_per_capita:  3.839<br />country: Latvia","gdp: 5.077262e+10<br />co2_per_capita:  3.374<br />country: Lebanon","gdp: 4.709220e+09<br />co2_per_capita:  1.515<br />country: Lesotho","gdp: 4.037437e+09<br />co2_per_capita:  0.149<br />country: Liberia","gdp: 1.048832e+11<br />co2_per_capita:  7.924<br />country: Libya","gdp: 8.324284e+10<br />co2_per_capita:  4.957<br />country: Lithuania","gdp: 3.557740e+10<br />co2_per_capita: 13.151<br />country: Luxembourg","gdp: 3.704270e+10<br />co2_per_capita:  0.150<br />country: Madagascar","gdp: 2.625531e+10<br />co2_per_capita:  0.094<br />country: Malawi","gdp: 8.073898e+11<br />co2_per_capita:  7.968<br />country: Malaysia","gdp: 2.945989e+10<br />co2_per_capita:  0.308<br />country: Mali","gdp: 1.712204e+10<br />co2_per_capita:  3.072<br />country: Malta","gdp: 1.463884e+10<br />co2_per_capita:  0.951<br />country: Mauritania","gdp: 2.492020e+10<br />co2_per_capita:  3.104<br />country: Mauritius","gdp: 1.973141e+12<br />co2_per_capita:  3.501<br />country: Mexico","gdp: 2.523464e+10<br />co2_per_capita:  1.935<br />country: Moldova","gdp: 4.266239e+10<br />co2_per_capita: 12.532<br />country: Mongolia","gdp: 1.200526e+10<br />co2_per_capita:  3.993<br />country: Montenegro","gdp: 3.081574e+11<br />co2_per_capita:  1.901<br />country: Morocco","gdp: 3.018946e+10<br />co2_per_capita:  0.248<br />country: Mozambique","gdp: 2.853999e+11<br />co2_per_capita:  0.554<br />country: Myanmar","gdp: 2.104999e+10<br />co2_per_capita:  1.388<br />country: Namibia","gdp: 9.086547e+10<br />co2_per_capita:  0.533<br />country: Nepal","gdp: 8.419067e+11<br />co2_per_capita:  7.878<br />country: Netherlands","gdp: 1.963124e+11<br />co2_per_capita:  6.720<br />country: New Zealand","gdp: 3.158027e+10<br />co2_per_capita:  0.774<br />country: Nicaragua","gdp: 2.229910e+10<br />co2_per_capita:  0.111<br />country: Niger","gdp: 1.098722e+12<br />co2_per_capita:  0.618<br />country: Nigeria","gdp: 4.055043e+10<br />co2_per_capita:  2.057<br />country: North Korea","gdp: 2.816564e+10<br />co2_per_capita:  3.505<br />country: North Macedonia","gdp: 4.670080e+11<br />co2_per_capita:  7.586<br />country: Norway","gdp: 1.700252e+11<br />co2_per_capita: 16.691<br />country: Oman","gdp: 1.278205e+12<br />co2_per_capita:  1.035<br />country: Pakistan","gdp: 2.316541e+10<br />co2_per_capita:  0.701<br />country: Palestine","gdp: 8.551815e+10<br />co2_per_capita:  2.426<br />country: Panama","gdp: 6.499764e+10<br />co2_per_capita:  1.217<br />country: Paraguay","gdp: 3.326916e+11<br />co2_per_capita:  1.569<br />country: Peru","gdp: 9.431417e+11<br />co2_per_capita:  1.248<br />country: Philippines","gdp: 1.173810e+12<br />co2_per_capita:  8.701<br />country: Poland","gdp: 2.771813e+11<br />co2_per_capita:  3.877<br />country: Portugal","gdp: 3.662456e+11<br />co2_per_capita: 37.032<br />country: Qatar","gdp: 5.051195e+11<br />co2_per_capita:  4.014<br />country: Romania","gdp: 3.809571e+12<br />co2_per_capita: 11.739<br />country: Russia","gdp: 2.666303e+10<br />co2_per_capita:  0.124<br />country: Rwanda","gdp: 1.515672e+09<br />co2_per_capita:  2.832<br />country: Saint Lucia","gdp: 8.247001e+08<br />co2_per_capita:  0.644<br />country: Sao Tome and Principe","gdp: 1.677227e+12<br />co2_per_capita: 22.211<br />country: Saudi Arabia","gdp: 4.957931e+10<br />co2_per_capita:  0.715<br />country: Senegal","gdp: 1.142621e+11<br />co2_per_capita:  6.391<br />country: Serbia","gdp: 2.944095e+09<br />co2_per_capita:  4.975<br />country: Seychelles","gdp: 1.125836e+10<br />co2_per_capita:  0.155<br />country: Sierra Leone","gdp: 4.455520e+11<br />co2_per_capita:  9.033<br />country: Singapore","gdp: 1.478926e+11<br />co2_per_capita:  6.470<br />country: Slovakia","gdp: 6.584635e+10<br />co2_per_capita:  6.179<br />country: Slovenia","gdp: 7.090779e+11<br />co2_per_capita:  6.925<br />country: South Africa","gdp: 2.084183e+12<br />co2_per_capita: 11.882<br />country: South Korea","gdp: 1.541122e+12<br />co2_per_capita:  4.799<br />country: Spain","gdp: 2.788984e+11<br />co2_per_capita:  1.014<br />country: Sri Lanka","gdp: 4.814924e+11<br />co2_per_capita:  3.709<br />country: Sweden","gdp: 5.480983e+11<br />co2_per_capita:  4.109<br />country: Switzerland","gdp: 5.425196e+10<br />co2_per_capita:  1.204<br />country: Syria","gdp: 1.218009e+12<br />co2_per_capita: 12.037<br />country: Taiwan","gdp: 4.680001e+10<br />co2_per_capita:  0.926<br />country: Tajikistan","gdp: 1.893440e+11<br />co2_per_capita:  0.291<br />country: Tanzania","gdp: 1.095187e+12<br />co2_per_capita:  3.724<br />country: Thailand","gdp: 1.348227e+10<br />co2_per_capita:  0.301<br />country: Togo","gdp: 3.660521e+10<br />co2_per_capita: 24.476<br />country: Trinidad and Tobago","gdp: 1.262733e+11<br />co2_per_capita:  2.587<br />country: Tunisia","gdp: 2.260196e+12<br />co2_per_capita:  5.222<br />country: Turkey","gdp: 9.578928e+10<br />co2_per_capita:  8.944<br />country: Turkmenistan","gdp: 9.720052e+10<br />co2_per_capita:  0.134<br />country: Uganda","gdp: 4.433133e+11<br />co2_per_capita:  4.744<br />country: Ukraine","gdp: 7.259047e+11<br />co2_per_capita: 22.089<br />country: United Arab Emirates","gdp: 2.512190e+12<br />co2_per_capita:  5.091<br />country: United Kingdom","gdp: 1.909938e+13<br />co2_per_capita: 14.794<br />country: United States","gdp: 6.584886e+10<br />co2_per_capita:  2.306<br />country: Uruguay","gdp: 3.724578e+11<br />co2_per_capita:  3.511<br />country: Uzbekistan","gdp: 1.386561e+11<br />co2_per_capita:  2.779<br />country: Venezuela","gdp: 7.719120e+11<br />co2_per_capita:  3.174<br />country: Vietnam","gdp: 1.260048e+14<br />co2_per_capita:  4.650<br />country: World","gdp: 5.995369e+10<br />co2_per_capita:  0.293<br />country: Yemen","gdp: 6.619194e+10<br />co2_per_capita:  0.397<br />country: Zambia","gdp: 2.514009e+10<br />co2_per_capita:  0.646<br />country: Zimbabwe"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,255,1)","opacity":0.69999999999999996,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,255,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826491,"l":37.260273972602747},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Emisiones per cápita vs PIB per cápita (2021)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[8.5395074827476982,14.365190859306166],"tickmode":"array","ticktext":["1e+10","1e+12","1e+14"],"tickvals":[10,12,14],"categoryorder":"array","categoryarray":["1e+10","1e+12","1e+14"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"PIB per cápita (USD, escala logarítmica)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.8064500000000001,38.881449999999994],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[2.2204460492503131e-16,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Emisiones per cápita (toneladas)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"22507b84784c":{"x":{},"y":{},"label":{},"type":"scatter"}},"cur_data":"22507b84784c","visdat":{"22507b84784c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
